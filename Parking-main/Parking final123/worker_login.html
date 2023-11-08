@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="worker_login.css">
+  <title>Login Form</title>
+</head>
+
+<body>
+  <div class="login-container">
+    <h1>Login</h1>
+    <form id="login-form" onsubmit="validateLogin(event)">
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" required>
+
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" required>
+
+      <p id="error-message" style="color: red; display: none;">Invalid username or password</p>
+
+      <button type="submit">Submit</button>
+    </form>
+    
+  </div>
+
+  <!-- ... (your existing code) ... -->
+
+  <script>
+    function validateLogin(event) {
+      event.preventDefault(); // Prevent the form from actually submitting
+
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+
+      // Check if username and password are correct (replace with your logic)
+      if (username === "worker" && password === "worker") {
+        // Redirect to worker.html if credentials are valid
+        window.location.href = "demotest1.html";
+      } else {
+        // Display error message for invalid credentials
+        const errorMessage = document.getElementById("error-message");
+        errorMessage.style.display = "block";
+      }
+    }
+  </script>
+</body>
+
+<!-- ... (your existing code) ... -->
+
+</html>

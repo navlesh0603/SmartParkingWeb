@@ -1,0 +1,93 @@
+/* Reset some default browser styles */
+body, h1 {
+  margin: 0;
+  padding: 0;
+}
+
+/* Basic styling */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(4, 100, 105, 0.315);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.slot-stats-table {
+  width: 100%;
+  display: table;
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+  position: sticky;
+  top: 0;
+  background-color: #d2f0ff; /* Change the background color to gray */
+  z-index: 1;
+}
+
+.slot-stats-table th, .slot-stats-table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  font-size: 18px; /* Increase the font size of numbers */
+}
+
+.slot-stats-table th {
+  background-color: hsl(0, 100%, 51%);
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+  margin-top: 10px; /* Reduce the margin-top */
+}
+
+.data-table th, .data-table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  font-size: 16px; /* Increase the font size of numbers in the data table */
+}
+
+.data-table th {
+  background-color: #f9f9f9;
+}
+
+/* Style for filter form */
+.filter-section {
+  margin-right: 20px;
+  margin-bottom: 10px;
+}
+
+#filterForm {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+label, select, input, button {
+  margin: 5px;
+}
+
+button {
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}

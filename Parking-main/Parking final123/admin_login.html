@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Login Form</title>
+  <!-- Include Firebase non-module scripts -->
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+<!-- Add your Firebase initialization code -->
+<script type="module">
+  import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js';
+  import { getAuth, createUserWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js';
+  // Initialize Firebase with your configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyAweNgRaWmZ-7ImvDYXXmBUiMwpYOdaQ9U",
+    authDomain: "parking-22c5c.firebaseapp.com",
+    projectId: "parking-22c5c",
+    storageBucket: "parking-22c5c.appspot.com",
+    messagingSenderId: "1004314647737",
+    appId: "1:1004314647737:web:2e3424cbe6567d8e30cf68",
+    measurementId: "G-KP8LHS9C9P"
+  };
+  firebase.initializeApp(firebaseConfig);
+</script>
+<script>
+  function validateLogin(event) {
+    event.preventDefault();
+
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+
+    const auth = firebase.auth();
+    signInWithEmailAndPassword(auth, username, password)
+      .then((userCredential) => {
+        // Authentication successful
+        const user = userCredential.user;
+        // Redirect to admin.html or perform other actions
+        window.location.href = "admin.html";
+      })
+      .catch((error) => {
+        // Display error message for invalid credentials
+        const errorMessage = document.getElementById("error-message");
+        errorMessage.style.display = "block";
+      });
+  }
+</script>
+
+</head>
+
+<body>
+  <div class="login-container">
+    <h1>Login</h1>
+    <form id="login-form" onsubmit="validateLogin(event)">
+
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" required>
+
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" required>
+
+      <p id="error-message" style="color: red; display: none;">Invalid username or password</p>
+
+      <button type="submit">Submit</button>
+    </form>
+    
+  </div>
+
+  <!-- ... (your existing code) ... -->
+
+  <script>
+    function validateLogin(event) {
+      event.preventDefault(); // Prevent the form from actually submitting
+
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+
+      // Check if username and password are correct (replace with your logic)
+      if (username === "admin" && password === "admin") {
+        // Redirect to admin.html if credentials are valid
+        window.location.href = "adminpage.html";
+      } else {
+        // Display error message for invalid credentials
+        const errorMessage = document.getElementById("error-message");
+        errorMessage.style.display = "block";
+      }
+    }
+  </script>
+</body>
+
+  
+</body>
+
+<!-- ... (your existing code) ... -->
+
+</html>

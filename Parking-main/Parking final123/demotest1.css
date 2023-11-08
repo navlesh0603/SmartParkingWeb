@@ -1,0 +1,116 @@
+/* Reset some default styles */
+body, h2 {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    text-align: center;
+    padding: 20px;
+}
+
+h2 {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.left-section,
+.right-section {
+    width: 50%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 10px;
+    background: #fff;
+    text-align: center;
+}
+
+.left-section {
+    max-width: 100%;
+    background-color: #f9f9f9;
+}
+
+form {
+    display: grid;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+label {
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="time"],
+select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.payment-options {
+    display: grid;
+    gap: 10px;
+}
+
+.payment-option {
+    display: flex;
+    align-items: center;
+}
+
+.payment-option input[type="radio"] {
+    margin-right: 5px;
+}
+
+button[type="submit"],
+button[type="button"] {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover,
+button[type="button"]:hover {
+    background-color: #0056b3;
+}
+
+/* Apply styles to video container and buttons in the right section */
+#video-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+video {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #000;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}

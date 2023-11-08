@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <link href="https://pyscript.net/alpha/pyscript.css" rel="stylesheet"/>
+    <script defer="" src="https://pyscript.net/alpha/pyscript.js"></script>
+    <link href="worker.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="flask.py">
+    <title>Parking Allotment</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Parking Allotment</h2>
+        <form>
+            <label for="vehicle-number">Vehicle Number Plate:</label>
+            <input id="vehicle-number" name="vehicle-number" required="" type="text" />
+            <label for="vehicle-type">Vehicle Type:</label>
+            <select id="vehicle-type" name="vehicle-type" required="">
+                <option value="car">Car</option>
+                <option value="bike">Bike</option>
+            </select>
+            <label for="in-time">In Time:</label>
+            <input id="in-time" name="in-time" required="" type="time" readonly/>
+            <label for="slot">Slot No:</label>
+            <input id="slot" name="slot" required="" type="text"/>
+            <label for="payment-method">Payment Method:</label>
+            <div class="payment-options">
+                <label class="payment-option">
+                    <input name="payment-method" required="" type="radio" value="upi"/>
+                    UPI
+                </label>
+                <label class="payment-option">
+                    <input name="payment-method" required="" type="radio" value="cards"/>
+                    Cards
+                </label>
+                <label class="payment-option">
+                    <input name="payment-method" required="" type="radio" value="cash"/>
+                    Cash
+                </label>
+            </div>
+            <div id="payment-details"></div>
+            <button type="submit">Allot</button>
+            <button id="refresh-button" type="button">Refresh</button> <!-- Added refresh button -->
+            <button type="button" id="print-slip-button">Print Slip</button>
+        </form>
+    </div>
+    <div id="Parking-slip"></div>
+    <script>
+        function selectPayment(option) {
+            const paymentDetailsDiv = document.getElementById("payment-details");
+            paymentDetailsDiv.innerHTML = `SLOT ALLOCATED SUCCESSFULLY ${option}`;
+        }
+
+        // Function to get the current time in the format HH:mm
+        function getCurrentTime() {
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            return `${hours}:${minutes}`;
+        }
+
+        // Set the default value of the "In Time" input field to the current time
+        const currentTime = getCurrentTime();
+        document.getElementById("in-time").value = currentTime;
+
+        // Add an event listener to the refresh button
+        document.getElementById("refresh-button").addEventListener("click", function () {
+            // Clear the vehicle number field and update the vehicle number from local storage if available
+            document.getElementById("vehicle-number").value = "";
+            const storedVehicleNumber = localStorage.getItem("copiedVehicleNumber");
+            if (storedVehicleNumber) {
+                document.getElementById("vehicle-number").value = storedVehicleNumber;
+            }
+            document.getElementById("vehicle-type").value = "car";
+            document.getElementById("in-time").value = currentTime; // Reset to current time
+            // Clear other fields and options as needed
+            document.getElementById("payment-details").innerHTML = "";
+            const paymentOptions = document.querySelectorAll(".payment-option");
+            paymentOptions.forEach(option => option.classList.remove("selected"));
+        });
+
+        // Rest of your JavaScript code...
+
+    </script>
+    <script src="worker.js" type="module"></script>
+</body>
+</html>

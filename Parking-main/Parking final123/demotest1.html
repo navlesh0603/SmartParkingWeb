@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Combined Page</title>
+    <link rel="stylesheet" type="text/css" href="demotest1.css">
+    <!-- Include Tesseract.js -->
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.2.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.2.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.2.0/firebase-auth.js"></script>
+    
+</head>
+<body>
+    <div class="container">
+        <!-- Left Section (Worker) -->
+        <div class="left-section">
+            <!-- Paste the content of "worker.html" here -->
+            <!-- You can keep the existing JavaScript imports and code here -->
+            <div class="container">
+                
+                <form>
+                    <label for="vehicle-number">Vehicle Number Plate:</label>
+                    <input id="vehicle-number" name="vehicle-number" required="" type="text" />
+                    <label for="vehicle-type">Vehicle Type:</label>
+                    <select id="vehicle-type" name="vehicle-type" required="">
+                        <option value="car">Car</option>
+                        <option value="bike">Bike</option>
+                    </select>
+                    <label for="in-time">In Time:</label>
+                    <input id="in-time" name="in-time" required="" type="time" readonly/>
+                    <label for="slot">Slot No:</label>
+                    <input id="slot" name="slot" required="" type="text"/>
+                    <label for="payment-method">Payment Method:</label>
+                    <div class="payment-options">
+                        <label class="payment-option">
+                            <input name="payment-method" required="" type="radio" value="upi"/>
+                            UPI
+                        </label>
+                        <label class="payment-option">
+                            <input name="payment-method" required="" type="radio" value="cards"/>
+                            Cards
+                        </label>
+                        <label class="payment-option">
+                            <input name="payment-method" required="" type="radio" value="cash"/>
+                            Cash
+                        </label>
+                    </div>
+                    <div id="payment-details"></div>
+                    <button type="submit">Allot</button>
+                    <button id="refresh-button" type="button">Refresh</button> <!-- Added refresh button -->
+                    <button type="button" id="print-slip-button">Print Slip</button>
+                </form>
+            </div>
+            <div id="Parking-slip"></div>
+            <script>
+                function selectPayment(option) {
+                    const paymentDetailsDiv = document.getElementById("payment-details");
+                    paymentDetailsDiv.innerHTML = `SLOT ALLOCATED SUCCESSFULLY ${option}`;
+                }
+        
+                // Function to get the current time in the format HH:mm
+                function getCurrentTime() {
+                    const now = new Date();
+                    const hours = now.getHours().toString().padStart(2, '0');
+                    const minutes = now.getMinutes().toString().padStart(2, '0');
+                    return `${hours}:${minutes}`;
+                }
+        
+                // Set the default value of the "In Time" input field to the current time
+                const currentTime = getCurrentTime();
+                document.getElementById("in-time").value = currentTime;
+        
+                // Add an event listener to the refresh button
+                document.getElementById("refresh-button").addEventListener("click", function () {
+                    // Clear the vehicle number field and update the vehicle number from local storage if available
+                    document.getElementById("vehicle-number").value = "";
+                    const storedVehicleNumber = localStorage.getItem("copiedVehicleNumber");
+                    if (storedVehicleNumber) {
+                        document.getElementById("vehicle-number").value = storedVehicleNumber;
+                    }
+                    document.getElementById("vehicle-type").value = "car";
+                    document.getElementById("in-time").value = currentTime; // Reset to current time
+                    // Clear other fields and options as needed
+                    document.getElementById("payment-details").innerHTML = "";
+                    const paymentOptions = document.querySelectorAll(".payment-option");
+                    paymentOptions.forEach(option => option.classList.remove("selected"));
+                });
+        
+                // Rest of your JavaScript code...
+        
+            </script>
+            <script>
+                // JavaScript event listener for the Print Slip button
+                document.getElementById("print-slip-button").addEventListener("click", function() {
+                    // Navigate to the "parkingslip.html" page
+                    window.location.href = "parkingslip.html";
+                });
+                </script>
+                 
+            <script src="worker.js" type="module"></script>
+        </div>
+        
+        <!-- Right Section (Test) -->
+        <div class="right-section">
+            <!-- Paste the content of "test1.html" here -->
+            <!-- You can keep the existing JavaScript imports and code here -->
+            <div id="video-container">
+        <video id="video" autoplay></video>
+    </div>
+    <canvas id="canvas" style="display: none;"></canvas>
+    <button id="capture-button">Capture and Detect Number Plate</button>
+    <button id="close-button">Close Camera</button>
+    <!-- Add a button to copy the vehicle number -->
+    <button id="copy-vehicle-number-button">Copy Vehicle Number</button>
+
+    <div id="result"></div>
+    <div id="proper-number-plate"></div>
+    <script src="test1.js"></script>
+    <script src="numberplate.js"></script>
+        </div>
+    </div>
+
+    <script src="demotest1.js"></script>
+</body>
+</html>

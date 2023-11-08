@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parking Data</title>
+  <link rel="stylesheet" href="adminpage.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Parking Data</h1>
+    <table class="slot-stats-table">
+      <tr>
+        <td>Bike (Spot Booking)</td>
+        <td>Bike (Reserved)</td>
+        <td>Car (Spot Booking)</td>
+        <td>Car (Reserved)</td>
+      </tr>
+      <tr>
+        <td><span id="bikeSpotRemaining"></span> / 40</td>
+        <td><span id="bikeReservedRemaining"></span> / 10</td>
+        <td><span id="carSpotRemaining"></span> / 40</td>
+        <td><span id="carReservedRemaining"></span> / 10</td>
+      </tr>
+    </table>
+    <form id="filterForm">
+      <div class="filter-section">
+        <label for="vehicleType">Vehicle Type:</label>
+        <select id="vehicleType" name="vehicleType">
+          <option value="All">All</option>
+          <option value="Bike">Bike</option>
+          <option value="Car">Car</option>
+        </select>
+      </div>
+      <div class="filter-section">
+        <label>In Time (Ascending Order):</label>
+        <input type="checkbox" name="inTimeSort">
+      </div>
+      <div class "filter-section">
+        <label>Out Time (Ascending Order):</label>
+        <input type="checkbox" name="outTimeSort">
+      </div>
+      <div class="filter-section">
+        <label for="paymentMethod">Payment Method:</label>
+        <select id="paymentMethod" name="paymentMethod">
+          <option value="All">All</option>
+          <option value="Cash">Cash</option>
+          <option value="Cards">Cards</option>
+          <option value="UPI">UPI</option>
+        </select>
+      </div>
+      <button type="submit">Apply Filters</button>
+    </form>
+    <table class="data-table" id="dataTable">
+      <thead>
+        <tr>
+          <th>Sr. No.</th>
+          <th>Number Plate</th>
+          <th>Slot Number</th>
+          <th>Vehicle Type</th>
+          <th>Payment Method</th>
+          <th>In Time</th>
+          <th>Out Time</th>
+        </tr>
+      </thead>
+      <tbody id="dataBody"></tbody>
+    </table>
+  </div>
+  <script type="module" src="adminpage.js"></script>
+</body>
+</html>

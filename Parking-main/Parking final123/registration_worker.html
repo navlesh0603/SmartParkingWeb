@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+  <title>Registration Form</title>
+</head>
+
+<body>
+  <div class="registration-container">
+    <h1>Register</h1>
+    <form id="registration-form" onsubmit="registerUser(event)">
+      <label for="new-username">Username</label>
+      <input type="text" id="new-username" name="new-username" required>
+
+      <label for="new-password">Password</label>
+      <input type="password" id="new-password" name="new-password" required>
+
+      <button type="submit">Register</button>
+    </form>
+    
+    <p>Already have an account? <a href="worker_login.html">Login here</a></p>
+  </div>
+
+  <!-- ... (your existing code) ... -->
+
+  <script>
+    function registerUser(event) {
+      event.preventDefault(); // Prevent the form from actually submitting
+
+      const newUsername = document.getElementById("new-username").value;
+      const newPassword = document.getElementById("new-password").value;
+
+      // Perform user registration (replace with your logic)
+      // In a real scenario, you would typically make an API request to a server for registration.
+
+      // For now, let's assume successful registration and redirect to login page
+      window.location.href = "login.html";
+    }
+  </script>
+</body>
+
+<!-- ... (your existing code) ... -->
+
+</html>

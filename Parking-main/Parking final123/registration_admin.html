@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <title>Registration Form</title>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+<!-- Add other Firebase scripts as needed -->
+
+<script type="module">
+  import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js';
+  import { getAuth, createUserWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js';
+  // Initialize Firebase with your configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyAweNgRaWmZ-7ImvDYXXmBUiMwpYOdaQ9U",
+    authDomain: "parking-22c5c.firebaseapp.com",
+    projectId: "parking-22c5c",
+    storageBucket: "parking-22c5c.appspot.com",
+    messagingSenderId: "1004314647737",
+    appId: "1:1004314647737:web:2e3424cbe6567d8e30cf68",
+    measurementId: "G-KP8LHS9C9P"
+  };
+  firebase.initializeApp(firebaseConfig);
+</script>
+<script>
+  function registerUser(event) {
+    event.preventDefault();
+
+    const newUsername = document.getElementById("new-username").value;
+    const newPassword = document.getElementById("new-password").value;
+
+    // Register user with Firebase
+    const auth = firebase.auth();
+    createUserWithEmailAndPassword(auth, newUsername, newPassword)
+      .then((userCredential) => {
+        // User registration successful
+        console.log("User registered:", userCredential.user);
+        // Redirect to login page or perform other actions
+        window.location.href = "login.html";
+      })
+      .catch((error) => {
+        // Handle registration errors
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.error("Registration error:", errorMessage);
+      });
+  }
+</script>
+</head>
+
+<body>
+  <div class="registration-container">
+    <h1>Register</h1>
+    <form id="registration-form" onsubmit="registerUser(event)">
+
+      <label for="new-username">Username</label>
+      <input type="text" id="new-username" name="new-username" required>
+
+      <label for="new-password">Password</label>
+      <input type="password" id="new-password" name="new-password" required>
+
+      <button type="submit">Register</button>
+    </form>
+    
+    <p>Already have an account? <a href="admin_login.html">Login here</a></p>
+  </div>
+
+  <!-- ... (your existing code) ... -->
+
+  
+  
+</body>
+
+<!-- ... (your existing code) ... -->
+
+</html>

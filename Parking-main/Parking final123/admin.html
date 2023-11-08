@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 90vw;
+            height: 100vh;
+            max-height: 90%;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+    </style>
+    <title>Dataset Entry Table Interface</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Dataset Entry Table</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Sr.NO</th>
+                    <th>No.Plate</th>
+                    <th>Slot</th>
+                    <th>In-Time</th>
+                    <th>Out-Time</th>
+                    <th>Payment-Method</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>MH12-AS-5678</td>
+                    <td>A-2</td>
+                    <td>12:20 Am</td>
+                    <td>1:20 Am</td>
+                    <td>G-pay</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>MH12-WB-5878</td>
+                    <td>S-2</td>
+                    <td>1:30 Pm</td>
+                    <td>2:20 pm</td>
+                    <td>Paytm</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>MH02-XR-5238</td>
+                    <td>E-9</td>
+                    <td>3:50 pm</td>
+                    <td>4:20 pm</td>
+
+                    <td>Bharatpay</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>MH02-RC-5234</td>
+                    <td>A-2</td>
+                    <td>3:50 pm</td>
+                    <td>10:20 pm</td>
+                    <td>Card</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
